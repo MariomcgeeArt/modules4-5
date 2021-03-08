@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="weather-form">
+
+    <h1>Weather in {{city1_info['city']}} and {{city2_info['city']}}</h1>
+    <p>{{date}}</p>
+
+
+    {% if city1_info['temp'] - city2_info['temp'] < 0  %}
+    <p>
+        It is {{city1_info['temp'] - city2_info['temp'] - 2*(city1_info['temp'] - city2_info['temp'])}} {{units_letter}} COLDER in {{city1_info['city']}} than in {{city2_info['city']}} today.
+    </p>
+    {% else %}
+    <p>
+        It is {{city1_info['temp'] - city2_info['temp']}} {{units_letter}} WARMER in {{city1_info['city']}} than in {{city2_info['city']}} today.
+    </p>
+    {% endif %}
+
+    {% if city1_info['humidity'] - city2_info['humidity'] < 0  %}
+    <p>
+        The humidity in {{city1_info['city']}} is {{city1_info['humidity'] - city2_info['humidity'] - 2*(city1_info['humidity'] - city2_info['humidity'])}} % LESS than in {{city2_info['city']}}.
+    </p>
+    {% else %}
+    <p>
+        The humidity in {{city1_info['city']}} is {{city1_info['humidity'] - city2_info['humidity']}} % GREATER than in {{city2_info['city']}}.
+    </p>
+
+    {% endif %}
+
+
+    {% if city1_info['wind_speed'] - city2_info['wind_speed'] < 0  %}
+    <p>
+        The wind speed in {{city1_info['city']}} is {{city1_info['wind_speed'] - city2_info['wind_speed'] - 2*(city1_info['wind_speed'] - city2_info['wind_speed']) }} miles/hour LESS than in {{city2_info['city']}}.
+    </p>
+    {% else %}
+    <p>
+        The wind speed in {{city1_info['city']}} is {{city1_info['wind_speed'] - city2_info['wind_speed']}} miles/hour GREATER than in {{city2_info['city']}}.
+    </p>
+    {% endif %}
+
+    {% if city1_info['sunset'] - city2_info['sunset'] < 0  %}
+    <p>
+        The sun sets in {{city1_info['city']}} {{ city1_info['sunset'] - city2_info['sunset'] - 2*(city1_info['sunset'] - city2_info['sunset']) }} hours EARLIER than in {{city2_info['city']}}.
+    </p>
+    {% else %}
+    <p>
+        The sun sets in {{city1_info['city']}} {{ city1_info['sunset'] - city2_info['sunset'] }} hours LATER than in {{city2_info['city']}}.
+    </p>
+    {% endif %}
+    
+</section>
+
+{% endblock %}
